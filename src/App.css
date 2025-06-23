@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@plugin "daisyui" ;
+
+@plugin "daisyui/theme" {
+  name: "sonartori-light";
+  default: true;
+  color-scheme: light;
+
+--color-primary: #CAEB66;
+  --color-primary-content: #1a1a1a;
+
+  --color-secondary: #03373D;
+  --color-secondary-content: #ffffff;
+
+  --color-accent: oklch(75% 0.2 180);
+  --color-accent-content: oklch(98% 0.01 180);
+
+  --color-base-100: oklch(98% 0.02 240);
+  --color-base-200: oklch(95% 0.03 240);
+  --color-base-300: oklch(92% 0.04 240);
+  --color-base-content: oklch(20% 0.05 240);
+
+  --color-neutral: oklch(90% 0.01 240);
+  --color-neutral-content: oklch(20% 0.05 240);
+
+  --color-info: oklch(70% 0.2 220);
+  --color-success: oklch(65% 0.25 140);
+  --color-warning: oklch(80% 0.25 80);
+  --color-error: oklch(65% 0.3 30);
+}
+
+/* Dark Theme */
+@plugin "daisyui/theme" {
+  name: "sonartori-dark";
+  /* prefersdark: true; */
+  color-scheme: dark;
+
+ --color-primary: #7DDE8C; /* ✅ New primary for dark */
+  --color-primary-content: #0F1F0F;
+
+  --color-secondary: #021E22;
+  --color-secondary-content: #E5F9F5;
+
+  --color-accent: oklch(65% 0.2 180);
+  --color-accent-content: oklch(98% 0.01 180);
+
+  --color-base-100: oklch(12% 0.01 240); /* main background */
+  --color-base-200: oklch(18% 0.01 240);
+  --color-base-300: oklch(24% 0.01 240);
+  --color-base-content: oklch(96% 0.01 240); /* main text color */
+
+  --color-neutral: oklch(30% 0.02 240);
+  --color-neutral-content: oklch(95% 0.01 240);
+
+  --color-info: oklch(70% 0.2 220);
+  --color-success: oklch(65% 0.25 140);
+  --color-warning: oklch(75% 0.25 100);
+  --color-error: oklch(65% 0.3 30);
+}
+
+.font-urbanist {
+    font-family: "Urbanist", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: `400;
+    font-style: normal;
+}
