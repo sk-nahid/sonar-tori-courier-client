@@ -4,6 +4,7 @@ import Services from '../components/homeComponents/Services';
 import BrandLogoBar from '../components/homeComponents/BrandLogoBar';
 import SpecialtySection from '../components/homeComponents/SpecialtySection';
 import BecomeMerchant from '../components/homeComponents/BecomeMerchant';
+import Loading from '../components/shareComponents/Loading';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <BrandLogoBar></BrandLogoBar>
             <SpecialtySection></SpecialtySection>
             <BecomeMerchant></BecomeMerchant>
+            
         </div>
     );
 };

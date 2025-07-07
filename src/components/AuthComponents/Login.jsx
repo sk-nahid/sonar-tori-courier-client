@@ -2,18 +2,29 @@ import React, { use } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
+import useAxiosInstance from '../../hooks/useAxiosInstance';
 
 const Login = () => {
     const {logIn}= use(AuthContext)
     const { register, handleSubmit } = useForm()
     const navigate = useNavigate()
+    const axiosInstance = useAxiosInstance()
     const onSubmit = data => {
         console.log(data)
         const { email, password } = data
         console.log(email, password)
         logIn(email, password)
-            .then(res => {
+            .then(async (res) => {
                 console.log(res.user)
+                const userinfo = {
+                            email,
+                            role: "user",
+                            createdAt: new Date().toISOString(),
+                            lastLoginAt: res.user.metadata.lastSignInTime
+                        }
+
+                        const userRes = await axiosInstance.post('/users', userinfo)
+                        console.log(userRes.data)
                 navigate('/')
             })
         .then(error=> console.log(error))

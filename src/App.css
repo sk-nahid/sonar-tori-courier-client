@@ -66,3 +66,9 @@
     font-weight: `400;
     font-style: normal;
 }
+
+.active{
+background-color: rgb(85, 72, 56);
+padding: 4px 6px;
+border-radius: 5px;
+}

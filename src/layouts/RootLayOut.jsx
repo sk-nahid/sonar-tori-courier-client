@@ -1,39 +1,56 @@
-import React from 'react';
+import React, { use } from 'react';
 import { NavLink, Outlet } from 'react-router';
 import NavBar from '../components/shareComponents/NavBar';
 import Footer from '../components/shareComponents/Footer';
+import { AuthContext } from '../Context/AuthContext';
 
 const RootLayOut = () => {
-    const linkClass = ({ isActive }) =>
-        isActive
-            ? "text-secondary font-semibold"
-            : "hover:text-secondary transition";
+    const { user } = use(AuthContext)
     const navLinks = <>
         <li>
-            <NavLink to="/" end className={linkClass}>
+            <NavLink to="/" end >
                 Home
             </NavLink>
         </li>
         <li>
-            <NavLink to="/services" className={linkClass}>
+            <NavLink to="/services" >
                 Services
             </NavLink>
         </li>
         <li>
-            <NavLink to="/track" className={linkClass}>
+            <NavLink to="/track" >
                 Track Parcel
             </NavLink>
         </li>
         <li>
-            <NavLink to="/contact" className={linkClass}>
+            <NavLink to="/contact" >
                 Contact
             </NavLink>
         </li>
         <li>
-            <NavLink to="/coverage" className={linkClass}>
+            <NavLink to="/add-parcel" >
+                Send Parcel
+            </NavLink>
+        </li>
+        <li>
+            <NavLink to="/coverage" >
                 Coverage
             </NavLink>
         </li>
+        <li>
+            <NavLink to="/be-rider" >
+                Be a Rider
+            </NavLink>
+        </li>
+        {
+            user && <>
+                <li>
+                    <NavLink to="/dashboard" >
+                        Dashboard
+                    </NavLink>
+                </li>
+            </>
+        }
     </>
 
 

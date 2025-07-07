@@ -10,18 +10,21 @@ import 'aos/dist/aos.css';
 import Aos from 'aos'
 import ContextProvidor from './Context/ContextProvidor.jsx'
 import "leaflet/dist/leaflet.css";
+import { QueryClient, QueryClientProvider, } from '@tanstack/react-query'
 
 Aos.init()
 
-
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')).render(
 
   <StrictMode>
-    <ContextProvidor>
-      <div className='font-urbanist'>
-        <RouterProvider router={router}></RouterProvider>
-      </div>
-    </ContextProvidor>
+    <QueryClientProvider client={queryClient} >
+      <ContextProvidor>
+        <div className='font-urbanist'>
+          <RouterProvider router={router}></RouterProvider>
+        </div>
+      </ContextProvidor>
+    </QueryClientProvider>
   </StrictMode>,
 )

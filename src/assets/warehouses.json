@@ -647,7 +647,7 @@
     "region": "Mymensingh",
     "district": "Jamalpur",
     "city": "Jamalpur",
-    "covered_area": ["Madarganj", "Islampur", "Sarishabari", "Baksiganj"],
+    "covered_area": ["Madarganj", "Islampur", "Sarishabari", "Baksiganj", "jamalpur sadar"],
     "status": "active",
     "flowchart": "https://example.com/jamalpur-flowchart.png",
     "longitude": 89.9333,

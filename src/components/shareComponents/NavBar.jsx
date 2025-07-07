@@ -29,9 +29,9 @@ const NavBar = ({ navLinks }) => {
             <div className="container mx-auto px-6 py-4 flex items-center justify-between">
 
                 {/* Logo */}
-                <NavLink to="/" className="text-2xl font-bold tracking-wide">
+                <Link to="/" className="text-2xl font-bold tracking-wide">
                     <img className='w-[170px]' src={`https://i.ibb.co/MWMN92Z/navLogo.png`} alt="logo" />
-                </NavLink>
+                </Link>
 
                 {/* Menu (hidden on mobile) */}
                 <ul className="hidden md:flex space-x-8">
@@ -53,7 +53,7 @@ const NavBar = ({ navLinks }) => {
                         Sign Up</button></Link>
                     }
                     {
-                        user ? <button className="btn btn-primary btn-sm">{ user.email}</button>: <Link to='/create-account'> <button className="btn btn-primary btn-sm">Register</button></Link>
+                        user ? <img className='w-[80px] h-[80px] object-cover object-center rounded-full' src={user?.photoURL} alt="profile-image" />: <Link to='/create-account'> <button className="btn btn-primary btn-sm">Register</button></Link>
                     }
                 </div>
 
