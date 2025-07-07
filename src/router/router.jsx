@@ -121,7 +121,7 @@ export const router = createBrowserRouter([
     ]
   },
   {
-    path: "forbidden",
+    path: "/forbidden",
     Component: Forbidden
   }
 ]);

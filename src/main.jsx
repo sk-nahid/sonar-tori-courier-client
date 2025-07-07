@@ -11,6 +11,7 @@ import Aos from 'aos'
 import ContextProvidor from './Context/ContextProvidor.jsx'
 import "leaflet/dist/leaflet.css";
 import { QueryClient, QueryClientProvider, } from '@tanstack/react-query'
+import { ToastContainer } from 'react-toastify'
 
 Aos.init()
 
@@ -24,6 +25,7 @@ createRoot(document.getElementById('root')).render(
         <div className='font-urbanist'>
           <RouterProvider router={router}></RouterProvider>
         </div>
+        <ToastContainer></ToastContainer>
       </ContextProvidor>
     </QueryClientProvider>
   </StrictMode>,

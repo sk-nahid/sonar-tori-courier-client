@@ -3,9 +3,11 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import useAxiosInstance from '../../hooks/useAxiosInstance';
+import Swal from 'sweetalert2';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Login = () => {
-    const {logIn}= use(AuthContext)
+    const { logIn } = use(AuthContext)
     const { register, handleSubmit } = useForm()
     const navigate = useNavigate()
     const axiosInstance = useAxiosInstance()
@@ -17,17 +19,27 @@ const Login = () => {
             .then(async (res) => {
                 console.log(res.user)
                 const userinfo = {
-                            email,
-                            role: "user",
-                            createdAt: new Date().toISOString(),
-                            lastLoginAt: res.user.metadata.lastSignInTime
-                        }
+                    email,
+                    role: "user",
+                    createdAt: new Date().toISOString(),
+                    lastLoginAt: res.user.metadata.lastSignInTime
+                }
 
-                        const userRes = await axiosInstance.post('/users', userinfo)
-                        console.log(userRes.data)
+                const userRes = await axiosInstance.post('/users', userinfo)
+                console.log(userRes.data)
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Login Successful",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 navigate('/')
             })
-        .then(error=> console.log(error))
+            .catch(error => {
+                // console.log(error.message)
+                toast.error(error.message)
+            })
     }
     return (
         <div className="flex-grow flex flex-col justify-center">
@@ -63,7 +75,7 @@ const Login = () => {
                     <div className="form-control mt-4">
                         <button className="btn btn-primary w-full">Login</button>
                     </div>
-                    
+
                 </form>
 
                 <p className="mt-4 text-sm text-center">
@@ -73,6 +85,7 @@ const Login = () => {
                     </Link>
                 </p>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

@@ -6,7 +6,8 @@ import Loading from '../components/shareComponents/Loading';
 import useUserRole from './useUserRole ';
 
 const axiosSecure = axios.create({
-    baseURL: 'https://sonar-tori-server.vercel.app'
+    baseURL: 'https://sonar-tori-server.vercel.app',
+    withCredentials: true
 })
 
 
@@ -30,15 +31,16 @@ const useAxios = () => {
 
     axiosSecure.interceptors.response.use((res) => {
         return res
-    },async (error) => {
+    }, async (error) => {
         console.log('error from req', error.status)
-        const status = error.status;
+         const status = await error.status;
         if (status === 403) {
-            navigate('/forbidden')
+            console.log('forbidden here')
+            // navigate('/forbidden')
         }
-        if (status === 401) {
+        else if (status === 401) {
             console.log('enter here')
-           await logOut()
+            await logOut()
                 .then(() => {
 
 

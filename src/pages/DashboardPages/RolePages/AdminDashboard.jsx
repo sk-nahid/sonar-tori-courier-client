@@ -7,7 +7,7 @@ const AdminDashboard = () => {
   const { data = [], isLoading, error } = useQuery({
     queryKey: ["parcelStatusCounts"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/parcels/dashboard/status");
+      const res = await axiosSecure.get("/parcels/admin/status");
       return res.data;
     },
   });

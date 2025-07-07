@@ -2,17 +2,25 @@ import React from 'react';
 import useUserRole from '../hooks/useUserRole ';
 import Loading from '../components/shareComponents/Loading';
 import { Navigate } from 'react-router';
+import useAuth from '../hooks/useAuth';
 
 const RiderPrivateRoute = ({children}) => {
-    const { role, isLoading } = useUserRole()
+    const { role, roleLoading } = useUserRole()
+    // const{user, loading} = useAuth()
     
-    if (isLoading) {
+    if (!role) {
+        
+        return
+    }
+    if (roleLoading ) {
+        
         return <Loading></Loading>
     }
-    if (role !== "rider") {
-        console.log('problem is here')
+    if ( role !== "rider") {
+        
         return <Navigate to="/forbidden"></Navigate>
     }
+    
 
     return children
 };

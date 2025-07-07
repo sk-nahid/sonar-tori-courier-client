@@ -8,12 +8,14 @@ const AdminPrivateRoute = ({children}) => {
 
     // const { user } = useAuth();
     const { role, isLoading } = useUserRole()
-    
+    if (!role) {
+        return
+    }
     if (isLoading) {
         return <Loading></Loading>
     }
     if (role !== "admin") {
-        console.log('problem is here')
+        
         return <Navigate to="/forbidden"></Navigate>
     }
 

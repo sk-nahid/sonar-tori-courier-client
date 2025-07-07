@@ -2,9 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import useAxios from "../../../hooks/useAxios";
 import AssignRiderModal from "./AssignRiderModal";
+import useAuth from "../../../hooks/useAuth";
 
 const AssignRider = () => {
   const axiosSecure = useAxios();
+  const {user}= useAuth()
   const [selectedDistrict, setSelectedDistrict] = useState(null);
   const [selectedParcel, setSelectedParcel] = useState(null);
 
